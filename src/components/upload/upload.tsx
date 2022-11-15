@@ -4,9 +4,9 @@ import styles from './upload.module.css';
 interface UploadProps {}
 
 const Upload: FC<UploadProps> = () => (
-  <div className={styles.Upload} data-testid="Upload">
+  <h1 className={styles.Upload} data-testid="Upload">
     Upload Component
-  </div>
+  </h1>
 );
 
 export default Upload;
