@@ -1,0 +1,7 @@
+{
+	"title": "OCR Prototype",
+	"navList": [
+        { "key": "home", "value": "/" },
+        { "key": "upload", "value": "/upload" }
+    ]
+}
