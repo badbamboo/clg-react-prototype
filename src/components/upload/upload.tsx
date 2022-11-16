@@ -1,47 +1,51 @@
-import React, { Component, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
 import { ENV_CONFIG } from '../../configuration';
 import _ from 'lodash';
 
-export default function Upload() {
+const { ALERT_DANGER, ALERT_INFO, ALERT_SUCCESS, ERROR_FILE_MISSING, ERROR_FILE_TYPE, FILE_ID, FILE_TYPE, MESSAGE, MESSAGE_TEXT, URL_SCAN } = ENV_CONFIG;
 
+export default function Upload() {
 	const [file, setFile] = useState<any>();
-	const [imageData, setImageData] = useState<any>();
+	const [imageData, setImageData] = useState<any>([MESSAGE]);
+	const [alertVarient, setAlertVarient] = useState<any>(ALERT_INFO);
 
 	function handleChange(event) {
 		setFile(event.target.files[0]);
 	}
 
 	function handleSubmit(event) {
-		const { IMAGE_SCAN_URL, ERROR_FILE_MISSING, ERROR_FILE_TYPE, FILE_TYPE } = ENV_CONFIG;
+		setAlertVarient(ALERT_INFO);
 		event.preventDefault();
-		location;
-		const url = IMAGE_SCAN_URL;
 		if (!file) {
+			setAlertVarient(ALERT_DANGER);
+			setImageData([{ ...MESSAGE, text: ERROR_FILE_MISSING }]);
 			return console.error(ERROR_FILE_MISSING);
 		}
 		if (file.type !== FILE_TYPE) {
+			setAlertVarient(ALERT_DANGER);
+			setImageData([{ ...MESSAGE, text: ERROR_FILE_TYPE }]);
 			return console.error(ERROR_FILE_TYPE);
 		}
-
-		var formdata = new FormData();
-		formdata.append('imageFile', file, file.name);
-
-		var requestOptions: any = {
+		const formdata = new FormData();
+		formdata.append(FILE_ID, file, file.name);
+		const requestOptions: any = {
 			method: 'POST',
 			body: formdata
 		};
-
-		fetch(url, requestOptions)
+		setImageData([{ ...MESSAGE, text: MESSAGE_TEXT }]);
+		fetch(URL_SCAN, requestOptions)
 			.then((response) => response.text())
 			.then((result) => {
-				console.log(`result`,result)
-				console.log('result', typeof result)
-				setImageData([JSON.parse(result)]);
+				const { mac, serialNo } = JSON.parse(result);
+				setAlertVarient(ALERT_SUCCESS);
+				setImageData([
+					{ ...MESSAGE, text: `MAC ADDRESS: ${mac}` },
+					{ ...MESSAGE, text: `SERIAL NUMBER: ${serialNo}` }
+				]);
 			})
 			.catch((error) => console.log('error', error));
 	}
-
 	return (
 		<div className="col-5 m-3">
 			<form onSubmit={handleSubmit}>
@@ -50,17 +54,14 @@ export default function Upload() {
 				<button type="submit" className="btn btn-primary">
 					Upload
 				</button>
-				<ul>
-				{imageData ? imageData.map((nv: any) => {
-						return (
-							<li key={nv.mac}>
-								<h2>{nv.mac}</h2>
-							</li>
-						);
-					}): ``}
-				</ul>
+				{imageData.map((nv: any) => {
+					return (
+						<Alert className="mt-3" key={alertVarient} variant={alertVarient}>
+							{nv.text}
+						</Alert>
+					);
+				})}
 			</form>
 		</div>
 	);
 }
-{/* <textarea  className="form-control mt-5" defaultValue={imageData} ></textarea> */}
