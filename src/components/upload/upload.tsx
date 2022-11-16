@@ -4,7 +4,9 @@ import { ENV_CONFIG } from '../../configuration';
 import _ from 'lodash';
 
 export default function Upload() {
+
 	const [file, setFile] = useState<any>();
+	const [imageData, setImageData] = useState<any>();
 
 	function handleChange(event) {
 		setFile(event.target.files[0]);
@@ -15,8 +17,6 @@ export default function Upload() {
 		event.preventDefault();
 		location;
 		const url = IMAGE_SCAN_URL;
-		console.log('url', url);
-		console.log('file', file);
 		if (!file) {
 			return console.error(ERROR_FILE_MISSING);
 		}
@@ -29,13 +29,15 @@ export default function Upload() {
 
 		var requestOptions: any = {
 			method: 'POST',
-			body: formdata,
-			redirect: 'follow'
+			body: formdata
 		};
 
-		fetch('http://localhost:10200/scan', requestOptions)
+		fetch(url, requestOptions)
 			.then((response) => response.text())
-			.then((result) => console.log(`result`,result))
+			.then((result) => {
+				console.log(`result`,result)
+				setImageData(JSON.stringify(result));
+			})
 			.catch((error) => console.log('error', error));
 	}
 
@@ -47,8 +49,8 @@ export default function Upload() {
 				<button type="submit" className="btn btn-primary">
 					Upload
 				</button>
+				<textarea  className="form-control mt-5" defaultValue={imageData} ></textarea>
 			</form>
 		</div>
 	);
 }
-// https://www.filestack.com/fileschool/react/react-file-upload/
