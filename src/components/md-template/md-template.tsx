@@ -35,10 +35,6 @@ export default class MdTemplate extends Component<MdProps, MdState> {
 
 	render() {
 		const { tmpl } = this.state;
-		return (
-			<div className="table-container">
-				<ReactMarkdown remarkPlugins={[remarkGfm]}>{tmpl}</ReactMarkdown>
-			</div>
-		);
+		return <ReactMarkdown remarkPlugins={[remarkGfm]}>{tmpl}</ReactMarkdown>
 	}
 }

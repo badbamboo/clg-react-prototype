@@ -11,7 +11,6 @@ export default class Welcome extends Component<{}, { tmplPath; tmplData }> {
 
 	render() {
 		const { tmplPath, tmplData } = this.state;
-		console.log('tmplPath', tmplPath);
 		return <MdTemplate tmplData={tmplData} tmplPath={tmplPath}></MdTemplate>;
 	}
 }
