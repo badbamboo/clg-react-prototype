@@ -1,6 +1,6 @@
 {
 	"appId": "clg-react-prototype",
-	"appUrl": "http://localhost:3000",
+	"appUrl": "http://localhost:10200",
 	"appVersion": "0.0.1",
 	"descriptions": [],
 	"environment": "",
@@ -19,6 +19,6 @@
 			"version": "4.6.2"
 		}
 	],
-	"port": 3000,
+	"port": 10200,
 	"tags": []
 }

@@ -1,13 +1,20 @@
 {
-    "tmpl": {
-        "welcomePage": {
-            "tmplData": {"title": "OCR Image Scan Demo: React UI"},
-            "tmplPath": "template/welcome.md"
-        }
-    },
-	"title": "OCR Prototype",
 	"navList": [
-        { "key": "home", "value": "/" },
-        { "key": "upload", "value": "/upload" }
-    ]
+		{ "key": "home", "value": "/" },
+		{ "key": "upload", "value": "/upload" }
+	],
+	"port": "10200",
+	"tmpl": {
+		"str": {
+			"siteUrl": "http://localhost:<%= port %><%= path %>"
+		},
+		"welcomePage": {
+			"tmplData": { "title": "OCR Image Scan Demo: React UI" },
+			"tmplPath": "template/welcome.md"
+		}
+	},
+	"title": "OCR Prototype",
+	"uploadComponent": {
+        "url": "http://localhost:10200/scan"
+    }
 }

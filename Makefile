@@ -46,7 +46,8 @@ app-documentation:
 	@make app-serve
 
 app-gen-component: 
-	npx generate-react-cli component $(name)
+	npx generate-react-cli component $(name);
+	rm src/components/$(name)/*.stories*;rm src/components/$(name)/*.lazy*;rm src/components/$(name)/*.test*;rm src/components/$(name)/*.module*;
 
 app-init:
 	@npm config set registry $(NPM_REGISTRY)
