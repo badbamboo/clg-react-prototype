@@ -1,1 +1,1 @@
-"**works** like a charm!"
+"**works** like a charm **<%= name %>**"
