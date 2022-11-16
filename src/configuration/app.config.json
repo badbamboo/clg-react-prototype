@@ -1,4 +1,9 @@
 {
+    "component": {
+        "welcome": {
+            "tmplPath": "../"
+        }
+    },
 	"title": "OCR Prototype",
 	"navList": [
         { "key": "home", "value": "/" },
