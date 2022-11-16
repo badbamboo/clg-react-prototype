@@ -36,7 +36,8 @@ export default function Upload() {
 			.then((response) => response.text())
 			.then((result) => {
 				console.log(`result`,result)
-				setImageData(JSON.stringify(result));
+				console.log('result', typeof result)
+				setImageData([JSON.parse(result)]);
 			})
 			.catch((error) => console.log('error', error));
 	}
@@ -49,8 +50,17 @@ export default function Upload() {
 				<button type="submit" className="btn btn-primary">
 					Upload
 				</button>
-				<textarea  className="form-control mt-5" defaultValue={imageData} ></textarea>
+				<ul>
+				{imageData ? imageData.map((nv: any) => {
+						return (
+							<li key={nv.mac}>
+								<h2>{nv.mac}</h2>
+							</li>
+						);
+					}): ``}
+				</ul>
 			</form>
 		</div>
 	);
 }
+{/* <textarea  className="form-control mt-5" defaultValue={imageData} ></textarea> */}
