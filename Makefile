@@ -20,9 +20,6 @@ app-build:
 app-bump:
 	@bump
 
-app-component: 
-	npx generate-react-cli component $(name)
-
 app-config: 
 	@echo "CLG: $(CLG)"
 	@echo "APP_ID: $(APP_ID)"
@@ -47,6 +44,9 @@ app-documentation:
 	@npx arkit
 	@npm run compodoc
 	@make app-serve
+
+app-gen-component: 
+	npx generate-react-cli component $(name)
 
 app-init:
 	@npm config set registry $(NPM_REGISTRY)

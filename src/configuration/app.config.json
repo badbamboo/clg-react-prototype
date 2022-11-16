@@ -1,7 +1,8 @@
 {
-    "component": {
-        "welcome": {
-            "tmplPath": "../"
+    "tmpl": {
+        "welcomePage": {
+            "tmplData": {"title": "OCR Image Scan Demo: React UI"},
+            "tmplPath": "template/welcome.md"
         }
     },
 	"title": "OCR Prototype",
