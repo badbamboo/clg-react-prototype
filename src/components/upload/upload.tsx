@@ -47,20 +47,24 @@ export default function Upload() {
 			.catch((error) => console.log('error', error));
 	}
 	return (
-		<div className="col-5 m-3">
-			<form onSubmit={handleSubmit}>
-				<h1>React File Upload</h1>
-				<input type="file" className="form-control mb-3" onChange={handleChange} />
-				<button type="submit" className="btn btn-primary">
-					Upload
-				</button>
-				{imageData.map((nv: any) => {
-					return (
-						<Alert className="mt-3" key={alertVarient} variant={alertVarient}>
-							{nv.text}
-						</Alert>
-					);
-				})}
+		<div className="m-3">
+			<form className='row border' onSubmit={handleSubmit}>
+				<div className="col-6 p-5">
+					<h3 className="mb-4">React File Upload</h3>
+					<input type="file" className="form-control mb-3" onChange={handleChange} />
+					<button type="submit" className="btn btn-primary">
+						Upload
+					</button>
+				</div>
+				<div className="col-6 p-5">
+					{imageData.map((nv: any) => {
+						return (
+							<Alert className="mt-3" key={alertVarient} variant={alertVarient}>
+								{nv.text}
+							</Alert>
+						);
+					})}
+				</div>
 			</form>
 		</div>
 	);
