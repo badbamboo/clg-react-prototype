@@ -1,43 +1,17 @@
-# OCR Image Scan Demo: React UI
-> This project is the React interface for OCR Prototype demo API. 
+# OCR Image Scan
+The purpose of this project is to demo code implementation. 
+Code will, hopefully, give context to:
+- Problem solving
+- Variation on implementation approach
+- Understanding of framework usage
+
 ## Description
 WHAT DOES THE APPLICATION DO?
+This project is the Angular interface for reading text from image via [OCR](https://www.ibm.com/cloud/blog/optical-character-recognition), [server side](https://github.com/badbamboo/clg-prototype), framework [Tesseract.js](https://tesseract.projectnaptha.com/). 
 
-- Allow user to upload an image of a device's MAC ID & Serial Number. 
+> Functionality: 
+
+- Upload an image of a device's MAC ID & Serial Number via REST API 
 - Return image text information
 
-![alt text](./public/image/mac1.png "dept-chart")
-
-WHAT IS THE GOAL?
-
-1. Demonstrate the implementation image upload via React UI
-1. Demonstrate the implementation unit testing
-1. Demonstrate the implementation of REST API 
-1. Demonstrate the implementation usage of Makefile
-
-<!-- ## Getting Started
-> Running locally in Docker
-```
-$ git clone <repo>
-$ cd <repo>
-```
-> Running locally as developer
-```
-$ git clone <repo>
-$ cd <repo>
-$ make app-init
-$ make app-build
-$ make app-serve
-```
-
-> NOTE: Steps can be manually done by copying commands located in [Makefile](./Makefile) -->
-
-## Documentation
-Running documentation command will init the web server.
-```
-$ make app-documentation
-```
-> Add test coverage documentation by running the command below.
-```
-$ make app-test
-```
+![alt text](./public/image/imageFile.png "dept-chart")
