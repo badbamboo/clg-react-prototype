@@ -6,7 +6,7 @@ WHAT DOES THE APPLICATION DO?
 - Allow user to upload an image of a device's MAC ID & Serial Number. 
 - Return image text information
 
-![alt text](./image/mac1.png "dept-chart")
+![alt text](./public/image/mac1.png "dept-chart")
 
 WHAT IS THE GOAL?
 
